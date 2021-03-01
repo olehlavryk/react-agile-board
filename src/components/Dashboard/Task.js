@@ -1,5 +1,6 @@
 import React from "react";
 import { CardContent, Typography } from "@material-ui/core";
+import User from "src/components/common/User";
 
 const Task = ({ task }) => {
   return (
@@ -10,6 +11,7 @@ const Task = ({ task }) => {
       <Typography color="textSecondary" gutterBottom>
         {task.description}
       </Typography>
+      <User user={task?.assignee} />
     </CardContent>
   );
 };
