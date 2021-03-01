@@ -1,5 +1,12 @@
+import { observer } from "mobx-react-lite";
+import Dashboard from "src/components/Dashboard";
+
 function App() {
-  return <div>Start</div>;
+  return (
+    <main>
+      <Dashboard />
+    </main>
+  );
 }
 
-export default App;
+export default observer(App);
