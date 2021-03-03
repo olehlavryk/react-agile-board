@@ -30,7 +30,11 @@ function Header() {
                   id="active"
                   native
                   value={boards?.active?.id || ""}
-                  onChange={(event) => {}}
+                  onChange={(event) => {
+                    const { value } = event.target;
+
+                    boards.selectBoard(value);
+                  }}
                 >
                   <option value={""} disabled>
                     –

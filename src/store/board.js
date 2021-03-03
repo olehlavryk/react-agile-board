@@ -85,6 +85,9 @@ const BoardStore = types
       afterCreate() {
         self.load();
       },
+      selectBoard(id) {
+        self.active = id;
+      },
     };
   });
 
