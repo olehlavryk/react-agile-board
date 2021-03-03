@@ -152,7 +152,14 @@
       "id": "BACKLOG"
     },
     {
-      "tasks": [],
+      "tasks": [
+        {
+          "id": "8d5c1cf3-e62e-49f8-acc2-944298dab762",
+          "title": "New open taks",
+          "description": "New open task desc",
+          "assignee": "5"
+        }
+      ],
       "id": "OPEN"
     },
     {
@@ -161,6 +168,12 @@
           "id": "2",
           "title": "Task 2",
           "description": "Task some task description 3",
+          "assignee": "1"
+        },
+        {
+          "id": "dd2204fc-ec05-4b74-8bc8-c38c6cecb35d",
+          "title": "1",
+          "description": "1",
           "assignee": "1"
         }
       ],

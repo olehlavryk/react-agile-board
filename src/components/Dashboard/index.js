@@ -1,24 +1,30 @@
-import React, { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { observer } from "mobx-react-lite";
-import { Box, Grid, Paper, Typography, Button } from "@material-ui/core";
+import { Paper, Grid, Typography, Button } from "@material-ui/core";
+import Box from "@material-ui/core/Box";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
-import useStore from "src/hooks/useStore";
-import Column from "src/components/Dashboard/Column";
+import Column from "./Column";
+import useStore from "../../hooks/useStore";
+import NewTaskDialog from "./NewTaskDialog";
 
-function getListStyle(isDraggingOver) {
-  return {
-    backgroundColor: isDraggingOver ? "lightblue" : "lightgray",
-    padding: 8,
-    minHeight: 500,
-  };
-}
+const getListStyle = (isDraggingOver) => ({
+  background: isDraggingOver ? "lightblue" : "lightgrey",
+  padding: 8,
+  minHeight: 500,
+});
 
-const Dashboard = () => {
+function Dashboard() {
   const { boards } = useStore();
+  const [newTaskTo, setNewTask] = useState(null);
+
+  const closeDialog = useCallback(() => {
+    setNewTask(null);
+  }, [setNewTask]);
 
   const onDragEnd = useCallback(
     (event) => {
       const { source, destination, draggableId: taskId } = event;
+
       boards.active.moveTask(taskId, source, destination);
     },
     [boards]
@@ -42,7 +48,9 @@ const Dashboard = () => {
                     <Button
                       variant="outlined"
                       color="primary"
-                      onClick={() => {}}
+                      onClick={() => {
+                        setNewTask(section.id);
+                      }}
                     >
                       ADD
                     </Button>
@@ -65,8 +73,13 @@ const Dashboard = () => {
           })}
         </Grid>
       </DragDropContext>
+      <NewTaskDialog
+        open={!!newTaskTo}
+        sectionId={newTaskTo}
+        handleClose={closeDialog}
+      />
     </Box>
   );
-};
+}
 
 export default observer(Dashboard);
