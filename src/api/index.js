@@ -1,6 +1,6 @@
 import qs from "query-string";
 
-export const DOMAIN = "https://react-agile-board.herokuapp.com";
+export const DOMAIN = "https://react-agile-board.herokuapp.com/api";
 
 class ApiCall {
   constructor(domain) {
